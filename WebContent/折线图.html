@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/echarts.min.js"></script>
+</head>
+<body>
+	<div id="line" style="width: 500px; height: 500px;"></div>
+	<!--折线图容器-->
+	<script>
+		/**
+		   * 画折线图
+		 * @param container 容器
+		 * @param titleName 标题
+		 * @param xData x轴数据
+		 * @param seriesName 图表名称
+		 * @param seriesData 图表数据
+		 */
+		function drawLine(container, titleName, xData, seriesName, seriesData) {
+			var myChart = echarts.init(document.getElementById(container));
+			myOption = {
+				color : [ '#6a7985' ],
+				//标题样式
+				title : {
+					text : titleName,
+					textStyle : {
+						color : 'black',
+					},
+					left : 'center'
+				},
+				//菜单
+				legend : {
+					show : false
+				},
+				//提示框
+				tooltip : {
+					trigger : 'axis',
+					position : 'top',
+					axisPointer : {
+						type : 'cross',
+						label : {
+							backgroundColor : 'black'
+						}
+					}
+				},
+				//图形位置
+				grid : {
+					left : '4%',
+					right : '6%',
+					bottom : '4%',
+					top : 80,
+					containLabel : true
+				},
+				//x轴
+				xAxis : [ {
+					type : 'category',
+					//坐标轴两边留白策略，即x轴坐标点开始与结束点位置都不在最边缘
+					name:'日期',
+					boundaryGap : true,
+					axisLine : {
+						show : true,
+						//x轴线样式
+						lineStyle : {
+							color : '#17273B',
+							width : 1,
+							type : 'solid'
+						}
+					},
+					//与y轴平行的线样式
+					splitLine : {
+						show : false,
+						lineStyle : {
+							color : '#17273B',
+							width : 1,
+							type : 'solid',
+						}
+					},
+					//x轴字体设置
+					axisLabel : {
+						show : true,
+						fontSize : 12,
+						color : 'white'
+					},
+					data : xData
+				} ],
+				//y轴
+				yAxis : [ {
+					type : 'value',
+					name : '人数',
+					//y轴字体设置
+					axisLabel : {
+						show : true,
+						color : 'white',
+						fontSize : 12
+					},
+					//y轴线设置不显示
+					axisLine : {
+						show : true
+					},
+					//与x轴平行的线样式
+					splitLine : {
+						show : true,
+						lineStyle : {
+							color : '#17273B',
+							width : 1,
+							type : 'solid',
+						}
+					}
+				} ],
+				series : [ {
+					name : seriesName,
+					type : 'line',
+					//折线平滑
+					smooth : true,
+					symbol : 'circle',
+					symbolSize : 6,
+					//线条样式
+					lineStyle : {
+						color : {
+							type : 'linear',
+							x : 0,
+							y : 0,
+							x2 : 0,
+							y2 : 1,
+							colorStops : [ {
+								offset : 0,
+								// 0% 处的颜色
+								color : '#6ae6dd'
+							}, {
+								offset : 1,
+								// 100% 处的颜色
+								color : 'red'
+							} ],
+							globalCoord : false
+						},
+						width : 2,
+						type : 'solid',
+					},
+					//折线连接点样式
+					itemStyle : {
+						color : '#00E5DE'
+					},
+					//折线堆积区域样式
+					areaStyle : {
+						color : '#004c5E'
+					},
+					data : seriesData
+				} ]
+			};
+			myChart.setOption(myOption);
+		}
+		drawLine('line', '全国疫情累计趋势图', [ '01.11', '01.17', '01.23', '01.29', 
+			'02.04', '02.10', '02.16', '02.22', '02.28', '03.05', '03.11' ], '确诊', 
+			[41, 62, 830, 7736, 24363, 42708, 70635, 76846, 79389, 80710, 80980 ]);
+	</script>
+</body>
+
+</html>
