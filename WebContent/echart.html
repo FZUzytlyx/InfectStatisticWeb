@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
@@ -8,38 +7,47 @@
 		<script type="text/javascript" src="js/echarts.min.js"></script>
 		<script type="text/javascript" src="js/china.js"></script>
 	</head>
-
 	<body>
 		<div id="main" style="width: 1000px;height: 600px;"></div>
 		<script>
 			drawAdMap();
 			function drawAdMap() {
-				// 基于准备好的dom，初始化echarts图表
+				/*基于准备好的dom，初始化echarts图表*/
 				var myChart = echarts.init(document.getElementById('main'));
 				option = {
 					title: {
-						text: "不同地区点击量分布",
+						text: "中国疫情可视化地图",
 						x: 'center'
 					},
-					tooltip: { //tooltip提示框，鼠标悬浮交互时的信息提示
-						trigger: 'item' //触发类型，默认数据触发，见下图，可选为：'item' | 'axis'
+					tooltip: { 
+						/*tooltip提示框，鼠标悬浮交互时的信息提示,触发类型，默认数据触发，见下图，可选为：'item' | 'axis'*/
+						trigger: 'item'
 					},
-					legend: { //legend图例
-						orient: 'vertical', //布局方式，默认为水平布局，可选为：'horizontal' | 'vertical'
+					legend: { 
+						/*legend图例,布局方式，默认为水平布局，可选为：'horizontal' | 'vertical',date[]图例内容数组*/
+						orient: 'vertical', 
 						x: 'left',
-						data: ['点击量'] //图例内容数组
+						data: ['感染人数']
 					},
-					dataRange: { //dataRange值域选择
-						min: 0, //指定的最小值，eg: 0，默认无，必须参数，唯有指定了splitList时可缺省min。
+					dataRange: { 
+						/*dataRange值域选择
+						min:指定的最小值，eg: 0，默认无，必须参数，唯有指定了splitList时可缺省min。
+						x:水平安放位置，默认为全图左对齐，可选为：'center' | 'left' | 'right' | {number}（x坐标，单位px）
+						y:垂直安放位置，默认为全图底部，可选为：'top' | 'bottom' | 'center' | {number}（y坐标，单位px）
+						text:文本，默认为数值文本
+						calculable:是否启用值域漫游，启用后无视splitNumber和splitList，值域显示为线性渐变
+						*/
+						min: 0, 
 						max: 2500,
-						x: 'left', //水平安放位置，默认为全图左对齐，可选为：'center' | 'left' | 'right' | {number}（x坐标，单位px）
-						y: 'bottom', //垂直安放位置，默认为全图底部，可选为：'top' | 'bottom' | 'center' | {number}（y坐标，单位px）
-						text: ['高', '低'], // 文本，默认为数值文本
-						calculable: true //是否启用值域漫游，启用后无视splitNumber和splitList，值域显示为线性渐变
+						x: 'left', 
+						y: 'bottom', 
+						text: ['高', '低'], 
+						calculable: true
 					},
-					toolbox: { //toolbox
+					toolbox: { 
+						/*orient:布局方式，默认为水平布局，可选为：'horizontal' | 'vertical'*/
 						show: true,
-						orient: 'vertical', //布局方式，默认为水平布局，可选为：'horizontal' | 'vertical'
+						orient: 'vertical',
 						x: 'right',
 						y: 'center',
 						feature: {
@@ -58,17 +66,18 @@
 							}
 						}
 					},
-					roamController: { //缩放漫游组件
+					roamController: {
+						/*缩放漫游组件,mapYtpeControl:指定漫游组件可控地图类型，如：{ china: true }*/
 						show: true,
 						x: 'right',
-						mapTypeControl: { //必须，指定漫游组件可控地图类型，如：{ china: true }
+						mapTypeControl: { 
 							'china': true
 						}
 					},
-					//series : eval("[" + dataStr + "]")
-					series: [ //通用,驱动图表生成的数据内容数组，数组中每一项为一个系列的选项及数据，其中个别选项仅在部分图表类型中有效
+					/*series : eval("[" + dataStr + "]")*/
+					series: [ /*通用,驱动图表生成的数据内容数组，数组中每一项为一个系列的选项及数据，其中个别选项仅在部分图表类型中有效*/
 						{
-							name: '点击量',
+							name: '感染人数',
 							type: 'map',
 							mapType: 'china',
 							itemStyle: {
@@ -133,7 +142,7 @@
 								value: Math.round(Math.random() * 1000)
 							}, {
 								name: '湖北',
-								value: Math.round(Math.random() * 1000)
+								value: 20000
 							}, {
 								name: '广西',
 								value: Math.round(Math.random() * 1000)
@@ -189,12 +198,9 @@
 						}
 					]
 				};
-
-				// 为echarts对象加载数据
+				/*为echarts对象加载数据*/
 				myChart.setOption(option);
-
 			}
 		</script>
 	</body>
-
 </html>
