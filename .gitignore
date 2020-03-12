@@ -13,5 +13,3 @@
 #忽略build文件夹
 /build/
 
-#忽略exe文件
-*.exe
