@@ -1,41 +1,38 @@
 @charset "UTF-8";
-.mybody{
-	height: 100%; 
+
+.mybody {
+	height: 100%;
 	margin: 0;
 }
 
-.table tr td{
-    text-align: center;
-}
-
-.title{
-	font-family:微软雅黑;
-	font-size:22px;
-}
-
-.content{
-	font-family:微软雅黑;
-	font-size:16px;
-	font-weight:bold;
-	text-align:center;
-	color:red;
-}
-
-.change{
-	font-family:微软雅黑;
-	font-size:14px;
-	text-align:center;
-}
-
-#lineChart{
+.table tr td {
 	text-align: center;
 }
 
-#lineChart button{
-	width:300px;
-	height:50px;
-	font-size:20px;
-	font-family:微软雅黑;
+.title {
+	font-family: 微软雅黑;
+	font-size: 22px;
+}
+
+.content {
+	font-family: 微软雅黑;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	color: red;
+}
+
+.change {
+	font-family: 微软雅黑;
+	font-size: 14px;
+	text-align: center;
+}
+
+#back {
+	width: 120px;
+	height: 40px;
+	font-size: 20px;
+	font-family: 微软雅黑;
 	display: inline-block;
 	margin: auto;
 	padding: 0.4em 1em;
@@ -49,4 +46,24 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+#lineChart {
+	text-align: center;
+}
 
+#lineChart button {
+	width: 300px;
+	height: 50px;
+	font-size: 20px;
+	font-family: 微软雅黑;
+	display: inline-block;
+	margin: auto;
+	padding: 0.4em 1em;
+	border: none;
+	background: #87CEEB;
+	color: inherit;
+	vertical-align: middle;
+	position: relative;
+	z-index: 1;
+	-webkit-backface-visibility: hidden;
+	-moz-osx-font-smoothing: grayscale;
+}

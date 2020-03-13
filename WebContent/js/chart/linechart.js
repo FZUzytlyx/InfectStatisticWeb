@@ -1,4 +1,3 @@
-
 //全国疫情累计趋势图
 totalLineChart();
 function totalLineChart() {
@@ -6,15 +5,15 @@ function totalLineChart() {
 	var option = {
 		title : {
 			text : '全国疫情累计趋势图',
-	        left: 'center',
-	        align: 'right'
+			left : 'center',
+			align : 'right'
 		},
 		tooltip : {
 			trigger : 'axis'
 		},
 		legend : {
 			data : [ '确诊', '死亡', '治愈' ],
-		    left: 10
+			left : 10
 		},
 		grid : {
 			left : '3%',
@@ -62,15 +61,15 @@ function extantLineChart() {
 	var option = {
 		title : {
 			text : '全国疫情现存趋势图',
-	        left: 'center',
-	        align: 'right'
+			left : 'center',
+			align : 'right'
 		},
 		tooltip : {
 			trigger : 'axis'
 		},
 		legend : {
-			data : [ '现存确诊', '现存疑似'],
-		    left: 10
+			data : [ '现存确诊', '现存疑似' ],
+			left : 10
 		},
 		grid : {
 			left : '3%',
@@ -93,12 +92,14 @@ function extantLineChart() {
 				{
 					name : '现存确诊',
 					type : 'line',
-					data : [ 34, 41, 771, 7442, 22980, 37693, 58010, 51494, 37502, 23872, 14920]
+					data : [ 34, 41, 771, 7442, 22980, 37693, 58010, 51494,
+							37502, 23872, 14920 ]
 				},
 				{
 					name : '现存疑似',
 					type : 'line',
-					data : [ 0, 0, 1072, 12167, 23260, 21675, 7264, 4148, 1418, 482, 253]
+					data : [ 0, 0, 1072, 12167, 23260, 21675, 7264, 4148, 1418,
+							482, 253 ]
 				} ]
 	};
 	myChart.setOption(option, true);
@@ -110,15 +111,15 @@ function increaseLineChart() {
 	var option = {
 		title : {
 			text : '全国新增确诊|疑似',
-	        left: 'center',
-	        align: 'right'
+			left : 'center',
+			align : 'right'
 		},
 		tooltip : {
 			trigger : 'axis'
 		},
 		legend : {
-			data : [ '确诊', '疑似'],
-		    left: 10
+			data : [ '确诊', '疑似' ],
+			left : 10
 		},
 		grid : {
 			left : '3%',
@@ -137,18 +138,15 @@ function increaseLineChart() {
 			type : 'value',
 			name : '人数'
 		},
-		series : [
-				{
-					name : '确诊',
-					type : 'line',
-					data : [ 0, 17, 259, 1762, 3892, 2473, 2051, 454, 430, 145, 25]
-				},
-				{
-					name : '疑似',
-					type : 'line',
-					data : [ 0, 0, 257, 4148, 3971, 3536, 1563, 882, 248, 102, 33]
-				} ]
+		series : [ {
+			name : '确诊',
+			type : 'line',
+			data : [ 0, 17, 259, 1762, 3892, 2473, 2051, 454, 430, 145, 25 ]
+		}, {
+			name : '疑似',
+			type : 'line',
+			data : [ 0, 0, 257, 4148, 3971, 3536, 1563, 882, 248, 102, 33 ]
+		} ]
 	};
 	myChart.setOption(option, true);
 }
-

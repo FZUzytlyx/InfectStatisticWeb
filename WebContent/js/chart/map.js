@@ -220,7 +220,7 @@ function initEcharts(pName, Chinese) {
 		});
 
 	} else {
-		/*省份，添加双击 回退到全国*/
+		/* 省份，添加双击 回退到全国 */
 		myChart.on("dblclick", function() {
 			initEcharts("china", "中国");
 		});
@@ -228,7 +228,7 @@ function initEcharts(pName, Chinese) {
 
 }
 
-/*展示对应的省*/
+/* 展示对应的省 */
 function showProvince(pName, Chinese) {
 	loadBdScript('$' + pName + 'JS', './js/province/' + pName + '.js',
 			function() {
@@ -236,7 +236,7 @@ function showProvince(pName, Chinese) {
 			});
 }
 
-/*加载对应的JS*/
+/* 加载对应的JS */
 function loadBdScript(scriptId, url, callback) {
 	var script = document.createElement("script");
 	script.type = "text/javascript";
