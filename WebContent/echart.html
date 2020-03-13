@@ -3,12 +3,45 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
+		<link rel="stylesheet" href="css/index.css">
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/echarts.min.js"></script>
 		<script type="text/javascript" src="js/china.js"></script>
+		<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"> </script>
 	</head>
-	<body style="height: 100%; margin: 0">
-	
+	<body class="mybody">
+		
+		<div style="margin-top: 15px">
+            <table style="margin:auto">
+                <tr>
+                    <td><p class="title">现有确诊</p></td>
+                    <td><p class="title">现有疑似</p></td>
+                    <td><p class="title">现有重症</p></td>
+                </tr>
+                <tr>
+                    <td><p class="content" id="">123</p></td>
+                    <td><p class="content" id="">123</p></td>
+                    <td><p class="content" id="">123</p></td>
+                </tr>
+                <tr>
+                    <td><p class="title">累计确诊</p></td>
+                    <td><p class="title">累计治愈</p></td>
+                    <td><p class="title">累计死亡</p></td>
+                </tr>
+                <tr>
+                    <td><p class="content" id="">123</p></td>
+                    <td><p class="content" id="">123</p></td>
+                    <td><p class="content" id="">123</p></td>
+                </tr>
+            </table>
+        </div>
+		
+		
+		<div align="center">
+			<p style="font-family:黑体">点击选择时间:
+				<input type="text"  onClick="WdatePicker()" readonly="readonly"/>
+			</p>
+		</div>
 		<div id="main" style="width: 1000px;height: 600px;"></div>
 		<script type="text/javascript" src="js/chart/map.js"></script>
 		<div id="chart" style="width: 1000px;height: 600px;"></div>
