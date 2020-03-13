@@ -10,7 +10,6 @@
 		<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"> </script>
 	</head>
 	<body class="mybody">
-		
 		<div style="margin-top: 15px">
             <table style="margin:auto">
                 <tr>
@@ -35,18 +34,17 @@
                 </tr>
             </table>
         </div>
-		
-		
+				
 		<div align="center">
 			<p style="font-family:黑体">点击选择时间:
 				<input type="text"  onClick="WdatePicker()" readonly="readonly"/>
 			</p>
 		</div>
-		
+		<button id="back">返回全国</button>
 		<div id="main" style="width: 1000px;height: 600px;"></div>
 		<script type="text/javascript" src="js/chart/map.js"></script>
-		
-		<div>
+
+		<div align="center">
 		<div id="chart" style="width: 1000px;height: 600px;"></div>
 		<script type="text/javascript" src="js/chart/linechart.js"></script>
 		
@@ -55,7 +53,6 @@
 		    <button onclick="totalLineChart()">全国疫情累计趋势</button>
 		    <button onclick="increaseLineChart()">全国新增确诊|疑似</button>		    
 		</div>
-		
 		</div>
 		
 	</body>
