@@ -42,9 +42,21 @@
 				<input type="text"  onClick="WdatePicker()" readonly="readonly"/>
 			</p>
 		</div>
+		
 		<div id="main" style="width: 1000px;height: 600px;"></div>
 		<script type="text/javascript" src="js/chart/map.js"></script>
+		
+		<div>
 		<div id="chart" style="width: 1000px;height: 600px;"></div>
 		<script type="text/javascript" src="js/chart/linechart.js"></script>
+		
+		<div id="lineChart">
+		    <button onclick="extantLineChart()">全国疫情现存趋势</button>
+		    <button onclick="totalLineChart()">全国疫情累计趋势</button>
+		    <button onclick="increaseLineChart()">全国新增确诊|疑似</button>		    
+		</div>
+		
+		</div>
+		
 	</body>
 </html>

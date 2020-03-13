@@ -1,0 +1,16 @@
+#忽略所有.class文件
+/src/*.class
+
+#忽略.classpath
+.classpath
+
+#忽略.project
+.project
+
+#忽略.settings文件夹
+/.settings/
+
+#忽略build文件夹
+/build/
+
+/WebContent/
