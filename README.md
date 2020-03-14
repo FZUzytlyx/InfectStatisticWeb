@@ -6,7 +6,7 @@
 ## 结对学号(点击进入博客)
 [221701406张钰婷](https://www.cnblogs.com/zytblog/)
 [221701407吕宇昕](https://www.cnblogs.com/lyxblogaxi/)
-##项目介绍
+## 项目介绍
 
 ### 1.采用的技术
 前端实现，采用html+js+css的结构，html中加入echarts框架，使用Ajax获取疫情实时数据。
