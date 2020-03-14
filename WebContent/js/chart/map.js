@@ -14,6 +14,7 @@ var provincesText = [ '上海', '河北', '山西', '内蒙古', '辽宁', '吉�
 document.getElementById("back").onclick = function() {
 	initEcharts("china", "中国");
 	getData();
+	totalLineChart();
 };
 
 initEcharts("china", "中国");

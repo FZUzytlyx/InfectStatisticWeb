@@ -46,7 +46,7 @@
 }));
 
 neimengguLineChart();
-function neimengguChart() {
+function neimengguLineChart() {
 	var myChart = echarts.init(document.getElementById('chart'));
 	var option = {
 		title : {
