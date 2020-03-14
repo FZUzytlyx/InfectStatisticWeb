@@ -1,4 +1,4 @@
-//全国疫情累计趋势图
+/*全国疫情累计趋势图*/
 totalLineChart();
 function totalLineChart() {
 	var myChart = echarts.init(document.getElementById('chart'));
@@ -89,7 +89,7 @@ function totalLineChart() {
 	myChart.setOption(option, true);
 }
 
-//全国疫情现存趋势
+/*全国疫情现存趋势*/
 function extantLineChart() {
 	var myChart = echarts.init(document.getElementById('chart'));
 	var option = {
@@ -171,7 +171,7 @@ function extantLineChart() {
 	myChart.setOption(option, true);
 }
 
-//全国新增确诊|疑似
+/*全国新增确诊|疑似*/
 function increaseLineChart() {
 	var myChart = echarts.init(document.getElementById('chart'));
 	var option = {

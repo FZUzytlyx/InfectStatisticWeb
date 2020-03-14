@@ -9,7 +9,6 @@ var provinces = [ 'shanghai', 'hebei', 'shanxi', 'neimenggu', 'liaoning',
 var provincesText = [ '上海', '河北', '山西', '内蒙古', '辽宁', '吉林', '黑龙江', '江苏', '浙江',
 		'安徽', '福建', '江西', '山东', '河南', '湖北', '湖南', '广东', '广西', '海南', '四川', '贵州',
 		'云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆', '北京', '天津', '重庆', '香港', '澳门' ];
-//var seriesData = [];
 /* value : Math.round(Math.random() * 1000) */
 document.getElementById("back").onclick = function() {
 	initEcharts("china", "中国");
@@ -22,11 +21,10 @@ getData();
 
 function initEcharts(pName, Chinese) {
 	/* 基于准备好的dom，初始化echarts图表 */
-	//var tmpSeriesData = pName === "china" ? seriesData : [];
-	var tmpSeriesData=[];
-/*	if(pName==='china'){
-		getData();
-	}*/
+	var tmpSeriesData = [];
+	/*
+	 * if(pName==='china'){ getData(); }
+	 */
 	option = {
 		title : {
 			// text: "中国疫情可视化地图",
@@ -181,19 +179,25 @@ function getData() {
 						document.getElementById("totalConfirm").innerHTML = res.chinaTotal.confirm;
 						document.getElementById("dead").innerHTML = res.chinaTotal.dead;
 						document.getElementById("heal").innerHTML = res.chinaTotal.heal;
-
-						document.getElementById("addConfirm").innerHTML = "较昨日"
-								+ res.chinaAdd.nowConfirm;
-						document.getElementById("addImport").innerHTML = "较昨日+"
-								+ res.chinaAdd.importedCase;
-						document.getElementById("addSevere").innerHTML = "较昨日"
-								+ res.chinaAdd.nowSevere;
-						document.getElementById("addTotalConfirm").innerHTML = "较昨日+"
-								+ res.chinaAdd.confirm;
-						document.getElementById("addDead").innerHTML = "较昨日+"
-								+ res.chinaAdd.dead;
-						document.getElementById("addHeal").innerHTML = "较昨日+"
-								+ res.chinaAdd.heal;
+						
+						document.getElementById("addConfirm").innerHTML = res.chinaAdd.nowConfirm >= 0 ? "较昨日+"
+								+ res.chinaAdd.nowConfirm
+								: "较昨日" + res.chinaAdd.nowConfirm;
+						document.getElementById("addImport").innerHTML = res.chinaAdd.importedCase >= 0 ? "较昨日+"
+								+ res.chinaAdd.importedCase
+								: "较昨日" + res.chinaAdd.importedCase;
+						document.getElementById("addSevere").innerHTML = res.chinaAdd.nowSevere >= 0 ? "较昨日+"
+								+ res.chinaAdd.nowSevere
+								: "较昨日" + res.chinaAdd.nowSevere;
+						document.getElementById("addTotalConfirm").innerHTML = res.chinaAdd.confirm >= 0 ? "较昨日+"
+								+ res.chinaAdd.confirm
+								: "较昨日" + res.chinaAdd.confirm;
+						document.getElementById("addDead").innerHTML = res.chinaAdd.dead >= 0 ? "较昨日+"
+								+ res.chinaAdd.dead
+								: "较昨日" + res.chinaAdd.dead;
+						document.getElementById("addHeal").innerHTML = res.chinaAdd.heal >= 0 ? "较昨日+"
+								+ res.chinaAdd.heal
+								: "较昨日" + res.chinaAdd.heal;
 						/* 获取到各个省份的数据 */
 						var province = res.areaTree[0].children;
 						for (var i = 0; i < province.length; i++) {
