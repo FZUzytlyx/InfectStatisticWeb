@@ -5,13 +5,16 @@
 	margin: 0;
 }
 
-.table tr td {
+table{
+	width:700px;
+	background:#F5F5F5;
 	text-align: center;
 }
 
 .title {
 	font-family: 微软雅黑;
 	font-size: 20px;
+	text-align: center;
 }
 
 .content {
@@ -19,8 +22,32 @@
 	font-size: 24px;
 	font-weight: bold;
 	text-align: center;
-	color: red;
 }
+
+.littletitle {
+	text-align: center;
+}
+
+#nowConfirm {
+	color:red;
+}
+
+#importedCase {
+	color:#A52A2A;
+}
+
+#nowSevere {
+	color:#DDA0DD;
+}
+
+#totalConfirm {
+    color:#DC143C;
+}
+
+#heal {
+	color:#32CD32;
+}
+
 
 #back {
 	width: 120px;
