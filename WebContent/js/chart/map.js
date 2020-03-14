@@ -6,121 +6,11 @@ var provinces = [ 'shanghai', 'hebei', 'shanxi', 'neimenggu', 'liaoning',
 		'guangxi', 'hainan', 'sichuan', 'guizhou', 'yunnan', 'xizang',
 		'shanxi1', 'gansu', 'qinghai', 'ningxia', 'xinjiang', 'beijing',
 		'tianjin', 'chongqing', 'xianggang', 'aomen' ];
-
 var provincesText = [ '上海', '河北', '山西', '内蒙古', '辽宁', '吉林', '黑龙江', '江苏', '浙江',
 		'安徽', '福建', '江西', '山东', '河南', '湖北', '湖南', '广东', '广西', '海南', '四川', '贵州',
 		'云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆', '北京', '天津', '重庆', '香港', '澳门' ];
-
-var seriesData = [ /*{
-	name : '北京',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '天津',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '上海',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '重庆',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '河北',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '河南',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '云南',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '辽宁',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '黑龙江',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '湖南',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '安徽',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '山东',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '新疆',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '江苏',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '浙江',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '江西',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '湖北',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '广西',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '甘肃',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '山西',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '内蒙古',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '陕西',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '吉林',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '福建',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '贵州',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '广东',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '青海',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '西藏',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '四川',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '宁夏',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '海南',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '台湾',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '香港',
-	value : Math.round(Math.random() * 1000)
-}, {
-	name : '澳门',
-	value : Math.round(Math.random() * 1000)
-}*/ ];
-
-/*获取点击时选中的日期*/
-function dateClick(a){
-    var date=a.cal.getNewDateStr();
-    alert(date);
-}
-
+//var seriesData = [];
+/* value : Math.round(Math.random() * 1000) */
 document.getElementById("back").onclick = function() {
 	initEcharts("china", "中国");
 	getData();
@@ -131,7 +21,11 @@ getData();
 
 function initEcharts(pName, Chinese) {
 	/* 基于准备好的dom，初始化echarts图表 */
-	var tmpSeriesData = pName === "china" ? seriesData : [];
+	//var tmpSeriesData = pName === "china" ? seriesData : [];
+	var tmpSeriesData=[];
+/*	if(pName==='china'){
+		getData();
+	}*/
 	option = {
 		title : {
 			// text: "中国疫情可视化地图",
@@ -266,59 +160,65 @@ function loadBdScript(scriptId, url, callback) {
 	document.getElementsByTagName("head")[0].appendChild(script);
 };
 
-
-//获取数据
+/* 获取数据 */
 function getData() {
-  $.ajax({
-    url: "https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5",
-    dataType: "jsonp",
-    data:{
-    	date:$('#datePicker').find("input").val()
-    },
-    success: function (data) {
-      var res = data.data || "";
-      res = JSON.parse(res);
-      var newArr = [];
-      if (res) {
-    	  document.getElementById("nowConfirm").innerHTML=res.chinaTotal.nowConfirm;
-    	  document.getElementById("importedCase").innerHTML=res.chinaTotal.importedCase;
-    	  document.getElementById("nowSevere").innerHTML=res.chinaTotal.nowSevere;
-    	  document.getElementById("totalConfirm").innerHTML=res.chinaTotal.confirm;
-    	  document.getElementById("dead").innerHTML=res.chinaTotal.dead;
-    	  document.getElementById("heal").innerHTML=res.chinaTotal.heal;
-    	  
-    	  document.getElementById("addConfirm").innerHTML="较昨日"+res.chinaAdd.nowConfirm;
-    	  document.getElementById("addImport").innerHTML="较昨日+"+res.chinaAdd.importedCase;
-    	  document.getElementById("addSevere").innerHTML="较昨日"+res.chinaAdd.nowSevere;
-    	  document.getElementById("addTotalConfirm").innerHTML="较昨日+"+res.chinaAdd.confirm;
-    	  document.getElementById("addDead").innerHTML="较昨日+"+res.chinaAdd.dead;
-    	  document.getElementById("addHeal").innerHTML="较昨日+"+res.chinaAdd.heal;
-        /*获取到各个省份的数据*/
-        var province = res.areaTree[0].children;
-        for (var i = 0; i < province.length; i++) {
-          var json = {
-            name: province[i].name,
-            value: province[i].total.confirm-province[i].total.heal-province[i].total.dead
-          }
-          newArr.push(json)
-        }
-        /*使用指定的配置项和数据显示图表*/
-        myChart.setOption({
-          series: [
-            {
-              name: '确诊数',
-              type: 'map',
-              mapType: 'china',
-              roam: false,
-              label: {
-                show: true,
-                color: 'rgb(249, 249, 249)'
-              },
-              data: newArr
-            }
-          ]
-        });
-      }
-    }
-  })
+	$
+			.ajax({
+				url : "https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5",
+				dataType : "jsonp",
+				data : {
+					date : $('#datePicker').find("input").val()
+				},
+				success : function(data) {
+					var res = data.data || "";
+					res = JSON.parse(res);
+					var newArr = [];
+					if (res) {
+						document.getElementById("nowConfirm").innerHTML = res.chinaTotal.nowConfirm;
+						document.getElementById("importedCase").innerHTML = res.chinaTotal.importedCase;
+						document.getElementById("nowSevere").innerHTML = res.chinaTotal.nowSevere;
+						document.getElementById("totalConfirm").innerHTML = res.chinaTotal.confirm;
+						document.getElementById("dead").innerHTML = res.chinaTotal.dead;
+						document.getElementById("heal").innerHTML = res.chinaTotal.heal;
+
+						document.getElementById("addConfirm").innerHTML = "较昨日"
+								+ res.chinaAdd.nowConfirm;
+						document.getElementById("addImport").innerHTML = "较昨日+"
+								+ res.chinaAdd.importedCase;
+						document.getElementById("addSevere").innerHTML = "较昨日"
+								+ res.chinaAdd.nowSevere;
+						document.getElementById("addTotalConfirm").innerHTML = "较昨日+"
+								+ res.chinaAdd.confirm;
+						document.getElementById("addDead").innerHTML = "较昨日+"
+								+ res.chinaAdd.dead;
+						document.getElementById("addHeal").innerHTML = "较昨日+"
+								+ res.chinaAdd.heal;
+						/* 获取到各个省份的数据 */
+						var province = res.areaTree[0].children;
+						for (var i = 0; i < province.length; i++) {
+							var json = {
+								name : province[i].name,
+								value : province[i].total.confirm
+										- province[i].total.heal
+										- province[i].total.dead
+							}
+							newArr.push(json)
+						}
+						/* 使用指定的配置项和数据显示图表 */
+						myChart.setOption({
+							series : [ {
+								name : '确诊数',
+								type : 'map',
+								mapType : 'china',
+								roam : false,
+								label : {
+									show : true,
+									color : 'rgb(249, 249, 249)'
+								},
+								data : newArr
+							} ]
+						});
+					}
+				}
+			})
 }
