@@ -50,7 +50,7 @@ function jilinLineChart() {
 	var myChart = echarts.init(document.getElementById('chart'));
 	var option = {
 		title : {
-			text : 'jilin疫情趋势图',
+			text : '吉林疫情趋势图',
 			left : 'center',
 			align : 'right'
 		},

@@ -50,7 +50,7 @@ function shanxi1LineChart() {
 	var myChart = echarts.init(document.getElementById('chart'));
 	var option = {
 		title : {
-			text : '安徽疫情趋势图',
+			text : '陕西疫情趋势图',
 			left : 'center',
 			align : 'right'
 		},
