@@ -11,7 +11,7 @@ var provincesText = [ '上海', '河北', '山西', '内蒙古', '辽宁', '吉�
 		'安徽', '福建', '江西', '山东', '河南', '湖北', '湖南', '广东', '广西', '海南', '四川', '贵州',
 		'云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆', '北京', '天津', '重庆', '香港', '澳门' ];
 
-var seriesData = [ {
+var seriesData = [ /*{
 	name : '北京',
 	value : Math.round(Math.random() * 1000)
 }, {
@@ -113,18 +113,25 @@ var seriesData = [ {
 }, {
 	name : '澳门',
 	value : Math.round(Math.random() * 1000)
-} ];
+}*/ ];
+
+/*获取点击时选中的日期*/
+function dateClick(a){
+    var date=a.cal.getNewDateStr();
+    alert(date);
+}
 
 document.getElementById("back").onclick = function() {
 	initEcharts("china", "中国");
+	getData();
 };
 
 initEcharts("china", "中国");
+getData();
 
 function initEcharts(pName, Chinese) {
 	/* 基于准备好的dom，初始化echarts图表 */
 	var tmpSeriesData = pName === "china" ? seriesData : [];
-
 	option = {
 		title : {
 			// text: "中国疫情可视化地图",
@@ -150,7 +157,7 @@ function initEcharts(pName, Chinese) {
 			 * calculable:是否启用值域漫游，启用后无视splitNumber和splitList，值域显示为线性渐变
 			 */
 			min : 0,
-			max : 2500,
+			max : 100,
 			x : 'left',
 			y : 'bottom',
 			text : [ '高', '低' ],
@@ -223,6 +230,7 @@ function initEcharts(pName, Chinese) {
 		/* 省份，添加双击 回退到全国 */
 		myChart.on("dblclick", function() {
 			initEcharts("china", "中国");
+			getData();
 		});
 	}
 
@@ -258,3 +266,59 @@ function loadBdScript(scriptId, url, callback) {
 	document.getElementsByTagName("head")[0].appendChild(script);
 };
 
+
+//获取数据
+function getData() {
+  $.ajax({
+    url: "https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5",
+    dataType: "jsonp",
+    data:{
+    	date:$('#datePicker').find("input").val()
+    },
+    success: function (data) {
+      var res = data.data || "";
+      res = JSON.parse(res);
+      var newArr = [];
+      if (res) {
+    	  document.getElementById("nowConfirm").innerHTML=res.chinaTotal.nowConfirm;
+    	  document.getElementById("importedCase").innerHTML=res.chinaTotal.importedCase;
+    	  document.getElementById("nowSevere").innerHTML=res.chinaTotal.nowSevere;
+    	  document.getElementById("totalConfirm").innerHTML=res.chinaTotal.confirm;
+    	  document.getElementById("dead").innerHTML=res.chinaTotal.dead;
+    	  document.getElementById("heal").innerHTML=res.chinaTotal.heal;
+    	  
+    	  document.getElementById("addConfirm").innerHTML="较昨日"+res.chinaAdd.nowConfirm;
+    	  document.getElementById("addImport").innerHTML="较昨日+"+res.chinaAdd.importedCase;
+    	  document.getElementById("addSevere").innerHTML="较昨日"+res.chinaAdd.nowSevere;
+    	  document.getElementById("addTotalConfirm").innerHTML="较昨日+"+res.chinaAdd.confirm;
+    	  document.getElementById("addDead").innerHTML="较昨日+"+res.chinaAdd.dead;
+    	  document.getElementById("addHeal").innerHTML="较昨日+"+res.chinaAdd.heal;
+        /*获取到各个省份的数据*/
+        var province = res.areaTree[0].children;
+        for (var i = 0; i < province.length; i++) {
+          var json = {
+            name: province[i].name,
+            value: province[i].total.confirm-province[i].total.heal-province[i].total.dead
+          }
+          newArr.push(json)
+        }
+        /*使用指定的配置项和数据显示图表*/
+        myChart.setOption({
+          series: [
+            {
+              name: '确诊数',
+              type: 'map',
+              mapType: 'china',
+              roam: false,
+              label: {
+                show: true,
+                color: 'rgb(249, 249, 249)'
+              },
+              data: newArr
+            }
+          ]
+        });
+      }
+    }
+  })
+}
