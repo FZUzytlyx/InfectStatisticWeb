@@ -1,7 +1,169 @@
 # 代码风格
-#### 参照[《码出高效_阿里巴巴Java开发手册》](https://github.com/chjw8016/alibaba-java-style-guide)
+#### 参照
+#### [菜鸟教程-JavaScript代码规范](https://www.runoob.com/js/js-conventions.html)
+#### [W3school-HTML(5) 样式指南和代码约定](https://www.w3school.com.cn/html/html5_syntax.asp)
+#### [《码出高效_阿里巴巴Java开发手册》](https://github.com/chjw8016/alibaba-java-style-guide)
 ----
 
+## **JavaScript代码规范**
+#### 参照[菜鸟教程-JavaScript代码规范](https://www.runoob.com/js/js-conventions.html)
+## （一）变量名
+变量名推荐使用驼峰法来命名(camelCase):
+```
+firstName = "John";
+lastName = "Doe";
+
+price = 19.90;
+tax = 0.20;
+
+fullPrice = price + (price * tax);
+```
+
+## （二）空格与运算符
+通常运算符 ( = + - * / ) 前后需要添加空格
+## （三）代码缩进
+通常使用 4 个空格符号来缩进代码块。
+不推荐使用 TAB 键来缩进，因为不同编辑器 TAB 键的解析不一样。
+
+## （四）语句规则
+1.简单语句的通用规则:
+
+* 一条语句通常以分号作为结束符。
+```
+实例:
+var values = ["Volvo", "Saab", "Fiat"];
+
+var person = {
+    firstName: "John",
+    lastName: "Doe",
+    age: 50,
+    eyeColor: "blue"
+};
+```
+2.复杂语句的通用规则:
+
+* 将左花括号放在第一行的结尾。
+* 左花括号前添加一空格。
+* 将右花括号独立放在一行。
+* 不要以分号结束一个复杂的声明。
+
+## （五）对象规则
+对象定义的规则:
+
+* 将左花括号与类名放在同一行。
+* 冒号与属性值间有个空格。
+* 字符串使用双引号，数字不需要。
+* 最后一个属性-值对后面不要添加逗号。
+* 将右花括号独立放在一行，并以分号作为结束符号。
+```
+实例:
+var person = {
+    firstName: "John",
+    lastName: "Doe",
+    age: 50,
+    eyeColor: "blue"
+};
+```
+短的对象代码可以直接写成一行:
+```
+实例:
+var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+```
+## （六）每行代码字符小于 80
+为了便于阅读每行字符建议小于数 80 个。
+如果一个 JavaScript语句超过了80个字符，建议在运算符或者逗号后换行。
+
+## （七）命名规则
+1.一般很多代码语言的命名规则都是类似的，例如:
+
+* 变量和函数为小驼峰法标识,
+* 即除第一个单词之外，其他单词首字母大写（lowerCamelCase）全局变量为大写 (UPPERCASE)
+* 常量 (如 PI) 为大写 (UPPERCASE)
+
+2.HTML 和 CSS 的横杠(-)字符:
+
+* HTML5 属性可以以 data-(如：data-quantity,data-price)作为前缀。
+* CSS 使用 - 来连接属性名 (font-size)。
+
+*  "-" 通常在 JavaScript 中被认为是减法，所以不允许使用。
+3.下划线:
+
+* 驼峰法：
+JavaScript 中通常推荐使用驼峰法，jQuery 及其他 JavaScript 库都使用驼峰法。
+* 变量名不要以 $ 作为开始标记，会与很多 JavaScript 库冲突。
+
+----
+## **HTML5代码规范**
+#### 参照[W3school-HTML(5) 样式指南和代码约定](https://www.w3school.com.cn/html/html5_syntax.asp)
+
+## （一）请使用正确的文档类型
+请始终在文档的首行声明文档类型：
+```
+<!DOCTYPE html>
+```
+如果您一贯坚持小写标签，那么可以使用：
+```
+<!doctype html>
+```
+
+## （二）请使用小写元素名
+HTML5 允许在元素名中使用混合大小写字母。
+推荐使用小写元素名：
+
+* 混合大小写名称并不好
+* 开发者习惯使用小写名（比如在 XHTML 中）
+* 小写更起来更纯净
+* 小写更易书写
+
+## （三）关闭所有 HTML 元素
+在 HTML5 中，不必关闭所有元素，但建议关闭所有 HTML 元素。
+
+## （四）样式表
+请使用简单的语法来链接样式表（type 属性不是必需的）：
+```
+<link rel="stylesheet" href="styles.css">
+```
+短规则可以压缩为一行，就像这样：
+```
+p.into {font-family:"Verdana"; font-size:16em;}
+```
+长规则应该分为多行：
+```
+body {
+  background-color: lightgrey;
+  font-family: "Arial Black", Helvetica, sans-serif;
+  font-size: 16em;
+  color: black;
+}
+```
+* 开括号与选择器位于同一行
+* 在开括号之前用一个空格
+* 使用两个字符的缩进
+* 在每个属性与其值之间使用冒号加一个空格
+* 在每个逗号或分号之后使用空格
+* 在每个属性值对（包括最后一个）之后使用分号
+* 只在值包含空格时使用引号来包围值
+* 把闭括号放在新的一行，之前不用空格
+* 避免每行超过 80 个字符
+* 在逗号或分号之后添加空格，是所有书写类型的通用规则。
+
+## （五）HTML 注释
+```
+* 短注释应该在单行中书写，并在 <!-- 之后增加一个空格，在 <!-- 之前增加一个空格：
+<!-- This is a comment -->
+
+长注释，跨越多行，应该通过 <!-- 和 --> 在独立的行中书写：
+<!-- 
+  This is a long comment example. This is a long comment example. This is a long comment example.
+  This is a long comment example. This is a long comment example. This is a long comment example.
+-->
+```
+* 长注释更易观察，如果它们被缩进两个空格的话。
+
+----
+
+## **Java代码规范**
+#### 参照[《码出高效_阿里巴巴Java开发手册》](https://github.com/chjw8016/alibaba-java-style-guide)
 ## （一）缩进
 + 缩进采用4个空格，禁止使用tab字符。
 
