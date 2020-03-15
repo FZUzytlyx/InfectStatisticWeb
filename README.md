@@ -20,4 +20,4 @@
 ### 1.clone项目到本地
 ### 2.使用编译器（例如Eclipse）打开本项目，编辑器需配置有apache-tomcat。若使用编译器打开后项目变为Java项目，请右键项目，在“属性->项目构面”中勾选“Dynamic、Java、JavaScript”，选择“应用并关闭”将其配置为动态web项目。
 ### 3.最后右键项目，选择在服务器上运行即可。
-###ps.也可在将项目clone到本地之后，直接双击WebContent下的index.html运行。
+### ps.也可在将项目clone到本地之后，直接双击WebContent下的index.html运行。
